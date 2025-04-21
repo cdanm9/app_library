@@ -1,0 +1,60 @@
+_schema-version: "3.2"
+ID: app_lib
+version: 0.0.1
+modules:
+- name: app-lib-approuter
+  type: approuter.nodejs
+  path: app-lib-approuter
+  requires:
+  - name: app_lib_html_repo_runtime
+  - name: uaa_app_lib
+  - name: app_lib_dest
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: app_lib_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: app_lib_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - react_lib-content.zip
+      name: react_lib
+      target-path: resources/
+- name: react_lib
+  type: html5
+  path: react_lib
+  build-parameters:
+    builder: custom
+    commands:
+    - npm install
+    - npm run build
+    supported-platforms: []
+resources:
+- name: app_lib_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_app_lib
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: app_lib-xsuaa-service
+    service-plan: application
+- name: app_lib_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: app_lib_dest
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
