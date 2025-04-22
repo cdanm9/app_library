@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Theme, alpha, Components } from '@mui/material/styles';
-import { SvgIconProps } from '@mui/material/SvgIcon';
+import { alpha } from '@mui/material/styles';
 import { buttonBaseClasses } from '@mui/material/ButtonBase';
 import { dividerClasses } from '@mui/material/Divider';
 import { menuItemClasses } from '@mui/material/MenuItem';
@@ -9,8 +8,7 @@ import { tabClasses } from '@mui/material/Tab';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import { gray, brand } from '../themePrimitives';
 
-/* eslint-disable import/prefer-default-export */
-export const navigationCustomizations: Components<Theme> = {
+export const navigationCustomizations = {
   MuiMenuItem: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -58,7 +56,7 @@ export const navigationCustomizations: Components<Theme> = {
   },
   MuiSelect: {
     defaultProps: {
-      IconComponent: React.forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
+      IconComponent: React.forwardRef((props, ref) => (
         <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
       )),
     },
@@ -68,7 +66,8 @@ export const navigationCustomizations: Components<Theme> = {
         border: '1px solid',
         borderColor: gray[200],
         backgroundColor: (theme.vars || theme).palette.background.paper,
-        boxShadow: `inset 0 1px 0 1px hsla(220, 0%, 100%, 0.6), inset 0 -1px 0 1px hsla(220, 35%, 90%, 0.5)`,
+        boxShadow:
+          'inset 0 1px 0 1px hsla(220, 0%, 100%, 0.6), inset 0 -1px 0 1px hsla(220, 35%, 90%, 0.5)',
         '&:hover': {
           borderColor: gray[300],
           backgroundColor: (theme.vars || theme).palette.background.paper,
@@ -81,7 +80,6 @@ export const navigationCustomizations: Components<Theme> = {
         '&:before, &:after': {
           display: 'none',
         },
-
         ...theme.applyStyles('dark', {
           borderRadius: (theme.vars || theme).shape.borderRadius,
           borderColor: gray[700],
@@ -105,8 +103,6 @@ export const navigationCustomizations: Components<Theme> = {
         display: 'flex',
         alignItems: 'center',
         ...theme.applyStyles('dark', {
-          display: 'flex',
-          alignItems: 'center',
           '&:focus-visible': {
             backgroundColor: gray[900],
           },
@@ -254,15 +250,6 @@ export const navigationCustomizations: Components<Theme> = {
             color: (theme.vars || theme).palette.success.light,
           },
         }),
-        variants: [
-          {
-            props: { completed: true },
-            style: {
-              width: 12,
-              height: 12,
-            },
-          },
-        ],
       }),
     },
   },

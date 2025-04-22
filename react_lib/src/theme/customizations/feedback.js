@@ -1,8 +1,8 @@
-import { Theme, alpha, Components } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import { gray, orange } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const feedbackCustomizations: Components<Theme> = {
+export const feedbackCustomizations = {
   MuiAlert: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -13,10 +13,10 @@ export const feedbackCustomizations: Components<Theme> = {
         '& .MuiAlert-icon': {
           color: orange[500],
         },
-        ...theme.applyStyles('dark', {
+        ...(theme.applyStyles && theme.applyStyles('dark', {
           backgroundColor: `${alpha(orange[900], 0.5)}`,
           border: `1px solid ${alpha(orange[800], 0.5)}`,
-        }),
+        })),
       }),
     },
   },
@@ -37,9 +37,9 @@ export const feedbackCustomizations: Components<Theme> = {
         height: 8,
         borderRadius: 8,
         backgroundColor: gray[200],
-        ...theme.applyStyles('dark', {
+        ...(theme.applyStyles && theme.applyStyles('dark', {
           backgroundColor: gray[800],
-        }),
+        })),
       }),
     },
   },

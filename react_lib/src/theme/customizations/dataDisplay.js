@@ -1,4 +1,4 @@
-import { Theme, alpha, Components } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import { svgIconClasses } from '@mui/material/SvgIcon';
 import { typographyClasses } from '@mui/material/Typography';
 import { buttonBaseClasses } from '@mui/material/ButtonBase';
@@ -7,7 +7,7 @@ import { iconButtonClasses } from '@mui/material/IconButton';
 import { gray, red, green } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const dataDisplayCustomizations: Components<Theme> = {
+export const dataDisplayCustomizations = {
   MuiList: {
     styleOverrides: {
       root: {
@@ -99,78 +99,48 @@ export const dataDisplayCustomizations: Components<Theme> = {
         },
         variants: [
           {
-            props: {
-              color: 'default',
-            },
+            props: { color: 'default' },
             style: {
               borderColor: gray[200],
               backgroundColor: gray[100],
-              [`& .${chipClasses.label}`]: {
-                color: gray[500],
-              },
-              [`& .${chipClasses.icon}`]: {
-                color: gray[500],
-              },
-              ...theme.applyStyles('dark', {
+              [`& .${chipClasses.label}`]: { color: gray[500] },
+              [`& .${chipClasses.icon}`]: { color: gray[500] },
+              ...(theme.applyStyles && theme.applyStyles('dark', {
                 borderColor: gray[700],
                 backgroundColor: gray[800],
-                [`& .${chipClasses.label}`]: {
-                  color: gray[300],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: gray[300],
-                },
-              }),
+                [`& .${chipClasses.label}`]: { color: gray[300] },
+                [`& .${chipClasses.icon}`]: { color: gray[300] },
+              })),
             },
           },
           {
-            props: {
-              color: 'success',
-            },
+            props: { color: 'success' },
             style: {
               borderColor: green[200],
               backgroundColor: green[50],
-              [`& .${chipClasses.label}`]: {
-                color: green[500],
-              },
-              [`& .${chipClasses.icon}`]: {
-                color: green[500],
-              },
-              ...theme.applyStyles('dark', {
+              [`& .${chipClasses.label}`]: { color: green[500] },
+              [`& .${chipClasses.icon}`]: { color: green[500] },
+              ...(theme.applyStyles && theme.applyStyles('dark', {
                 borderColor: green[800],
                 backgroundColor: green[900],
-                [`& .${chipClasses.label}`]: {
-                  color: green[300],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: green[300],
-                },
-              }),
+                [`& .${chipClasses.label}`]: { color: green[300] },
+                [`& .${chipClasses.icon}`]: { color: green[300] },
+              })),
             },
           },
           {
-            props: {
-              color: 'error',
-            },
+            props: { color: 'error' },
             style: {
               borderColor: red[100],
               backgroundColor: red[50],
-              [`& .${chipClasses.label}`]: {
-                color: red[500],
-              },
-              [`& .${chipClasses.icon}`]: {
-                color: red[500],
-              },
-              ...theme.applyStyles('dark', {
+              [`& .${chipClasses.label}`]: { color: red[500] },
+              [`& .${chipClasses.icon}`]: { color: red[500] },
+              ...(theme.applyStyles && theme.applyStyles('dark', {
                 borderColor: red[800],
                 backgroundColor: red[900],
-                [`& .${chipClasses.label}`]: {
-                  color: red[200],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: red[300],
-                },
-              }),
+                [`& .${chipClasses.label}`]: { color: red[200] },
+                [`& .${chipClasses.icon}`]: { color: red[300] },
+              })),
             },
           },
           {
@@ -219,9 +189,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
       root: {
         variants: [
           {
-            props: {
-              fontSize: 'small',
-            },
+            props: { fontSize: 'small' },
             style: {
               fontSize: '1rem',
             },
