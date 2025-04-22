@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import dayjs from 'dayjs';
 import Button from '@mui/material/Button';
 import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
