@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run app_lib-react_lib",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/app-lib-approuter/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/react_lib/index.html"
+      ],
+      "cwd": "${workspaceFolder}/react_lib/build",
+      "env": {
+        "PORT": "6004",
+        "run.config": "{\"handlerId\":\"html5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/app_lib/react_lib\"}"
+      },
+      "envFile": "${workspaceFolder}/react_lib/.env1",
+      "preLaunchTask": "Run app_lib"
+    }
+  ]
+}
