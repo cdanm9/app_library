@@ -14,6 +14,7 @@ export default function PageViewsBarChart() {
     (theme.vars || theme).palette.primary.main,
     (theme.vars || theme).palette.primary.light,
   ];
+
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
       <CardContent>
@@ -41,15 +42,13 @@ export default function PageViewsBarChart() {
         <BarChart
           borderRadius={8}
           colors={colorPalette}
-          xAxis={
-            [
-              {
-                scaleType: 'band',
-                categoryGapRatio: 0.5,
-                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-              },
-            ] as any
-          }
+          xAxis={[
+            {
+              scaleType: 'band',
+              categoryGapRatio: 0.5,
+              data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            }
+          ]}
           series={[
             {
               id: 'page-views',

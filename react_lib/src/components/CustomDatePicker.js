@@ -1,30 +1,12 @@
-import * as React from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import React from 'react';
+import dayjs from 'dayjs';
 import Button from '@mui/material/Button';
 import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { UseDateFieldProps } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import {
-  BaseSingleInputFieldProps,
-  DateValidationError,
-  FieldSection,
-} from '@mui/x-date-pickers/models';
 
-interface ButtonFieldProps
-  extends UseDateFieldProps<Dayjs, false>,
-    BaseSingleInputFieldProps<
-      Dayjs | null,
-      Dayjs,
-      FieldSection,
-      false,
-      DateValidationError
-    > {
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function ButtonField(props: ButtonFieldProps) {
+function ButtonField(props) {
   const {
     setOpen,
     label,
@@ -52,7 +34,7 @@ function ButtonField(props: ButtonFieldProps) {
 }
 
 export default function CustomDatePicker() {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2023-04-17'));
+  const [value, setValue] = React.useState(dayjs('2023-04-17'));
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -63,7 +45,7 @@ export default function CustomDatePicker() {
         onChange={(newValue) => setValue(newValue)}
         slots={{ field: ButtonField }}
         slotProps={{
-          field: { setOpen } as any,
+          field: { setOpen },
           nextIconButton: { size: 'small' },
           previousIconButton: { size: 'small' },
         }}

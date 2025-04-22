@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -9,15 +9,7 @@ import Typography from '@mui/material/Typography';
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 import { areaElementClasses } from '@mui/x-charts/LineChart';
 
-export type StatCardProps = {
-  title: string;
-  value: string;
-  interval: string;
-  trend: 'up' | 'down' | 'neutral';
-  data: number[];
-};
-
-function getDaysInMonth(month: number, year: number) {
+function getDaysInMonth(month, year) {
   const date = new Date(year, month, 0);
   const monthName = date.toLocaleDateString('en-US', {
     month: 'short',
@@ -32,7 +24,7 @@ function getDaysInMonth(month: number, year: number) {
   return days;
 }
 
-function AreaGradient({ color, id }: { color: string; id: string }) {
+function AreaGradient({ color, id }) {
   return (
     <defs>
       <linearGradient id={id} x1="50%" y1="0%" x2="50%" y2="100%">
@@ -43,13 +35,7 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
   );
 }
 
-export default function StatCard({
-  title,
-  value,
-  interval,
-  trend,
-  data,
-}: StatCardProps) {
+export default function StatCard({ title, value, interval, trend, data }) {
   const theme = useTheme();
   const daysInWeek = getDaysInMonth(4, 2024);
 
@@ -69,9 +55,9 @@ export default function StatCard({
   };
 
   const labelColors = {
-    up: 'success' as const,
-    down: 'error' as const,
-    neutral: 'default' as const,
+    up: 'success',
+    down: 'error',
+    neutral: 'default',
   };
 
   const color = labelColors[trend];
